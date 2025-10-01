@@ -56,8 +56,16 @@ export class AuthService {
            user:userFound,
            token: token
        };
-
        return data;
+   }
 
+   async UsersList(){
+    const users = await this.usersRepository.find();
+    return users;
+   }
+
+   async UsersById(id: number){
+    const users = await this.usersRepository.findOneBy({ id: id });
+    return users;
    }
 }
